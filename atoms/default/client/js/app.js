@@ -41,11 +41,12 @@ const PaddedContainer = ({children, className}) => {
 }
 
 const PaidForBy = () => {
-
+    const link = useSelector(s=>s.sheets.global.logoLink);
+    
     return (
         <FlexContainer className="paid-for fl-col" >
             <p>Paid for by</p>
-            <img src='<%= path %>/logo.svg' width="230"/>
+            <a href={link} target='_blank'><img src='<%= path %>/logo.svg' width="230"/></a>
         </FlexContainer>
     )
 }
@@ -120,13 +121,15 @@ const Main = () => {
         return (<h1>Loading...</h1>);
     } else {
         const contentData = useSelector(s=>s.sheets.content);
+        const cta = useSelector(s=>s.sheets.global.cta);
         const [data, setData] = useState({});
 
         useEffect(() => {
-            const d = {};
+            const d = {cta};
             contentData.forEach(v => d[v.key] = v.content)
+
             setData(d);
-            console.log(d);
+            
         }, [])
         return (
             <main>
@@ -134,32 +137,18 @@ const Main = () => {
                 <section>
                     <PaddedContainer>
                         <CenterPara>
-                            <div  dangerouslySetInnerHTML={setHtml(data['p1'])}>
-
-                            </div>
-                            <p className="feature">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque iste quam rerum qui at perferendis doloribus molestias magnam, necessitatibus sapiente atque beatae voluptate reiciendis impedit odit explicabo, iusto soluta exercitationem!</p>
-                            <p>Commodi autem hic inventore corrupti odio dolor ea, magnam maxime eius veniam dolore repellendus soluta laudantium ab saepe. Inventore provident ratione ex repellendus minima corporis accusantium deserunt repudiandae corrupti necessitatibus.</p>
-                            <p>Nemo reiciendis nulla minus culpa voluptatem dolorem sit accusamus soluta consequuntur. Modi libero perspiciatis dolorum excepturi voluptate, a, aperiam, pariatur odio ad quo quia quae autem fugit cum quod facilis.</p>
-                            <p>Officia quas fugit dolorum. Quas tempore sint inventore quia deleniti quis explicabo iste commodi consectetur distinctio exercitationem suscipit nesciunt error non officia iure earum, vel aut assumenda? Expedita, similique at.</p>
-                            <br/>
-                            <p className="feature"><span className="hl">Watch:</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus error exercitationem laudantium dolore corrupti.</p>
+                            <div dangerouslySetInnerHTML={setHtml(data['block1'])}></div>
                         </CenterPara>          
 
-                        <Youtube videoId="qMtcWqCL_UQ" title="Hello" />
+                        <Youtube videoId={data.ytvid1} title="Youtube video" />
                         <CenterPara>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque iste quam rerum qui at perferendis doloribus molestias magnam, necessitatibus sapiente atque beatae voluptate reiciendis impedit odit explicabo, iusto soluta exercitationem!</p>
-                            <p>Commodi autem hic inventore corrupti odio dolor ea, magnam maxime eius veniam dolore repellendus soluta laudantium ab saepe. Inventore provident ratione ex repellendus minima corporis accusantium deserunt repudiandae corrupti necessitatibus.</p>
-                            <p>Nemo reiciendis nulla minus culpa voluptatem dolorem sit accusamus soluta consequuntur. Modi libero perspiciatis dolorum excepturi voluptate, a, aperiam, pariatur odio ad quo quia quae autem fugit cum quod facilis.</p>
-                            <p>Officia quas fugit dolorum. Quas tempore sint inventore quia deleniti quis explicabo iste commodi consectetur distinctio exercitationem suscipit nesciunt error non officia iure earum, vel aut assumenda? Expedita, similique at.</p>
+                            <div dangerouslySetInnerHTML={setHtml(data['block2'])}></div>
                         </CenterPara>
                     </PaddedContainer>
                     <ImagePanel image="<%= path %>/shopfront.jpg" />
                     <PaddedContainer>
                         <CenterPara>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque iste quam rerum qui at perferendis doloribus molestias magnam, necessitatibus sapiente atque beatae voluptate reiciendis impedit odit explicabo, iusto soluta exercitationem!</p>
-                            <p>Commodi autem hic inventore corrupti odio dolor ea, magnam maxime eius veniam dolore repellendus soluta laudantium ab saepe. Inventore provident ratione ex repellendus minima corporis accusantium deserunt repudiandae corrupti necessitatibus.</p>
-                            <p>Nemo reiciendis nulla minus culpa voluptatem dolorem sit accusamus soluta consequuntur. Modi libero perspiciatis dolorum excepturi voluptate, a, aperiam, pariatur odio ad quo quia quae autem fugit cum quod facilis.</p>
-                            <p>Officia quas fugit dolorum. Quas tempore sint inventore quia deleniti quis explicabo iste commodi consectetur distinctio exercitationem suscipit nesciunt error non officia iure earum, vel aut assumenda? Expedita, similique at.</p>
+                            <div dangerouslySetInnerHTML={setHtml(data['block3'])}></div>
                         </CenterPara>                                         
                         <div className="row">
                             <div className="col-50 p-rel">
@@ -167,19 +156,15 @@ const Main = () => {
                                     <LoopingBgVid src="computer.mp4" />
 
                                 </div>
-                                <small>Palisa  turns to her Chromebook to help run her business. From the Everything button that gives quick answers to questions like 'best growing conditions for Holy Basil' or ‘weather forecast’ for the farm, to selling Boon Luck Farm’s produce online, things are simply easier with a little help from Chromebook.</small>
+                                <small dangerouslySetInnerHTML={setHtml(data['caption1'])}></small>
                             </div>
                             <div className="col-50">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis nihil repellat velit dolor eum itaque quia omnis blanditiis voluptatibus ratione provident sit voluptatem, earum ipsa veritatis non aliquid reprehenderit iste!</p>
-                                <p>Ipsa eligendi id consectetur cumque ducimus veritatis delectus repellat alias corrupti, ab rem molestias quas itaque recusandae architecto non facilis esse accusantium optio a laboriosam nisi molestiae? Veritatis, molestias nostrum.</p>
-                                <p>Beatae quibusdam unde, odio optio, commodi necessitatibus sint obcaecati quisquam natus dolores expedita ea culpa sequi quidem dignissimos, consequatur aperiam tempore nulla. Tempore corrupti qui quia eveniet mollitia labore magni.</p>
+                                <div dangerouslySetInnerHTML={setHtml(data['block4'])}></div>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-50">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis nihil repellat velit dolor eum itaque quia omnis blanditiis voluptatibus ratione provident sit voluptatem, earum ipsa veritatis non aliquid reprehenderit iste!</p>
-                                <p>Ipsa eligendi id consectetur cumque ducimus veritatis delectus repellat alias corrupti, ab rem molestias quas itaque recusandae architecto non facilis esse accusantium optio a laboriosam nisi molestiae? Veritatis, molestias nostrum.</p>
-                                <p>Beatae quibusdam unde, odio optio, commodi necessitatibus sint obcaecati quisquam natus dolores expedita ea culpa sequi quidem dignissimos, consequatur aperiam tempore nulla. Tempore corrupti qui quia eveniet mollitia labore magni.</p>
+                                <div dangerouslySetInnerHTML={setHtml(data['block5'])}></div>
                             </div>
                             <div className="col-50 p-rel">
                                 <div className="min-h">
@@ -191,22 +176,22 @@ const Main = () => {
 
 
                         <div className="audio">
-                            <div className="title">Lorem ipsum dolor sit amet.</div>
+                            <div className="title">
+                                <div dangerouslySetInnerHTML={setHtml(data['audio1Cap'])}></div>
+                            </div>
                             <div className="player-body">
-                                <AudioPlayer src="<%= path %>/audio/up.mp3" />
+                                <AudioPlayer src={`<%= path %>/audio/${data.audio1}`} />
                             </div>
 
                         </div>
                     </PaddedContainer>
                     <ImagePanel image="<%= path %>/produce.jpg">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis sequi dolor laudantium debitis necessitatibus nam, molestias architecto facere iure ullam eius molestiae similique, placeat iste hic error et, voluptate aliquam!</p>
+                        <div dangerouslySetInnerHTML={setHtml(data['imagePanel1'])}></div>
                     </ImagePanel>
                     <PaddedContainer>                        
                         <div className="row">
                             <div className="col-50 p-rel">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum, vel voluptates facilis illo facere magni sapiente maxime eos architecto necessitatibus omnis eius nesciunt deleniti asperiores incidunt molestiae fugiat. Accusamus, ducimus?</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum, vel voluptates facilis illo facere magni sapiente maxime eos architecto necessitatibus omnis eius nesciunt deleniti asperiores incidunt molestiae fugiat. Accusamus, ducimus?</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum, vel voluptates facilis illo facere magni sapiente maxime eos architecto necessitatibus omnis eius nesciunt deleniti asperiores incidunt molestiae fugiat. Accusamus, ducimus?</p>
+                                <div dangerouslySetInnerHTML={setHtml(data['block6'])}></div>
                                 <div className="min-h">
                                     <LoopingBgVid src="computer.mp4" />
 
@@ -218,11 +203,9 @@ const Main = () => {
                                     <LoopingBgVid src="kitchen.mp4" />
 
                                 </div>
-                                <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus harum, placeat vitae quo delectus reiciendis cumque excepturi voluptates. Vel iure dolorum consequatur aut? Magnam optio dolor eaque nostrum, perferendis odit.</small>
+                                <small dangerouslySetInnerHTML={setHtml(data['caption2'])}></small>
 
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis nihil repellat velit dolor eum itaque quia omnis blanditiis voluptatibus ratione provident sit voluptatem, earum ipsa veritatis non aliquid reprehenderit iste!</p>
-                                <p>Ipsa eligendi id consectetur cumque ducimus veritatis delectus repellat alias corrupti, ab rem molestias quas itaque recusandae architecto non facilis esse accusantium optio a laboriosam nisi molestiae? Veritatis, molestias nostrum.</p>
-                                <p>Beatae quibusdam unde, odio optio, commodi necessitatibus sint obcaecati quisquam natus dolores expedita ea culpa sequi quidem dignissimos, consequatur aperiam tempore nulla. Tempore corrupti qui quia eveniet mollitia labore magni.</p>
+                                <div dangerouslySetInnerHTML={setHtml(data['block7'])}></div>
                             </div>
                         </div>
                         
@@ -231,7 +214,7 @@ const Main = () => {
 
                     
                     <div className="cta">
-                        <p className="text-center feature">Discover how <a href="#">Chromebook</a> can help you move forward</p>
+                        <div dangerouslySetInnerHTML={setHtml(data['cta'])}></div>            
                     </div>
 
 
