@@ -154,9 +154,12 @@ q {
   }
 }
 .center-para {
-  padding: 2rem;
   max-width: 30rem;
   margin: auto;
+  padding: 2rem 0;
+  @include mq(tablet) {
+    padding: 2rem;
+  }
 }
 .yt-vid {
   width: 80vmin;
@@ -170,13 +173,13 @@ q {
 
 .row {
   margin: 2rem auto;
-  width: 80%;
   @include mq($until: desktop) {
     .col-50 {
       margin: 2rem 0;
     }
   }
   @include mq(desktop) {
+    width: 80%;
     display: flex;
     .col-50 {
       width: 50%;
@@ -413,7 +416,8 @@ section {
     }
   }
   footer {
-    
+    padding: 0 2rem;
+
     background-color: #000;
     // margin: 2rem auto 0;
     
@@ -428,9 +432,13 @@ section {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
+        li, img {
+          max-width: 100%;
+        }
       }
   
       @include mq(desktop) {
+        padding: 2rem 0;
         display: flex;
         justify-content: space-between;
         .related-list {
@@ -445,6 +453,10 @@ section {
 
   .social-bar {
     margin-bottom: 2rem;
+    @include mq($until: desktop) {
+      padding: 0 2rem;
+    }
+
   }
   // #Footer .related {
   //   width: 100%;
