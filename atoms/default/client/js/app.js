@@ -60,11 +60,11 @@ const Header = () => {
             <LoopingBgVid src='hero.mp4' />
             <FlexContainer className="fl-col fl-space-between">
                 <PaidForBy/>
-                {/* <h1 dangerouslySetInnerHTML={setHtml(globalData.headline)}></h1> */}
-                <h1>
+                <h1 dangerouslySetInnerHTML={setHtml(globalData.headline)}></h1>
+                {/* <h1>
                 ‘It all comes back to holy basil’: <br/>
                 <span class="sub">how Palisa Anderson’s farm and community helped save her restaurant</span>
-                </h1>
+                </h1> */}
             </FlexContainer>
         </header>
     )
