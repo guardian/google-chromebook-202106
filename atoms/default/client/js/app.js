@@ -111,9 +111,14 @@ const CenterPara = ({className, children}) =>
         {children}
     </div>
 
-const LoopingBgVid = ({src}) => 
+const LoopingBgVid = ({src, image}) => 
     <div className="video-bg">
+        {image &&
+        <div className="image" style={{backgroundImage: `url(<%= path %>/${image})`}} ></div>
+        }
+        {src && 
         <video src={`<%= path %>/${src}`} loop muted='true' autoPlay width="400" height="200"></video>
+        }
     </div>
 
 const Youtube = ({videoId, title = 'Youtube player'}) =>
@@ -167,30 +172,20 @@ const Main = () => {
                             <div dangerouslySetInnerHTML={setHtml(data['block2'])}></div>
                         </CenterPara>
                     </PaddedContainer>
-                    <ImagePanel image="<%= path %>/shopfront.jpg" />
+                    <ImagePanel image="<%= path %>/shopfront.jpg" >
+                        <div dangerouslySetInnerHTML={setHtml(data['imagePanel1'])}></div>
+                    </ImagePanel>
                     <PaddedContainer>
                         <CenterPara>
                             <div dangerouslySetInnerHTML={setHtml(data['block3'])}></div>
                         </CenterPara>                                         
                         <div className="row">
-                            <div className="col-50 p-rel">
-                                <div className="min-h">
-                                    <LoopingBgVid src="computer.mp4" />
-
-                                </div>
-                                <small dangerouslySetInnerHTML={setHtml(data['caption1'])}></small>
-                            </div>
                             <div className="col-50">
                                 <div dangerouslySetInnerHTML={setHtml(data['block4'])}></div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-50">
-                                <div dangerouslySetInnerHTML={setHtml(data['block5'])}></div>
-                            </div>
                             <div className="col-50 p-rel">
                                 <div className="min-h">
-                                    <LoopingBgVid src="kitchen.mp4" />
+                                    <LoopingBgVid image="image-001.jpg" />
 
                                 </div>
                             </div>
@@ -206,26 +201,38 @@ const Main = () => {
                             </div>
 
                         </div>
+
+                        <div className="row">
+                            <div className="col-50 p-rel">
+                                <div className="min-h">
+                                    <LoopingBgVid src="computer.mp4" />
+                                </div>
+                                <small dangerouslySetInnerHTML={setHtml(data['caption1'])}></small>
+                            </div>
+                            <div className="col-50">
+                                <div dangerouslySetInnerHTML={setHtml(data['block5'])}></div>
+                            </div>
+                        </div>                        
                     </PaddedContainer>
-                    <ImagePanel image="<%= path %>/produce.jpg">
-                        <div dangerouslySetInnerHTML={setHtml(data['imagePanel1'])}></div>
+                    <ImagePanel image="<%= path %>/neonsign.jpg">
+                        
                     </ImagePanel>
                     <PaddedContainer>                        
                         <div className="row">
                             <div className="col-50 p-rel">
                                 <div dangerouslySetInnerHTML={setHtml(data['block6'])}></div>
                                 <div className="min-h">
-                                    <LoopingBgVid src="computer.mp4" />
-
+                                    <LoopingBgVid image="image-003.jpg" />
                                 </div>
+                                <small dangerouslySetInnerHTML={setHtml(data['caption2'])}></small>
                                 
                             </div>
                             <div className="col-50">
                                 <div className="min-h">
-                                    <LoopingBgVid src="kitchen.mp4" />
+                                    <LoopingBgVid src="chef.mp4" />
 
                                 </div>
-                                <small dangerouslySetInnerHTML={setHtml(data['caption2'])}></small>
+                                
 
                                 <div dangerouslySetInnerHTML={setHtml(data['block7'])}></div>
                             </div>
