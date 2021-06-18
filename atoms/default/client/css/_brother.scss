@@ -86,10 +86,12 @@ ul.inline {
 // }
 
 h1, h2 {
-  line-height: 1.2;
+  line-height: 1.1;
+  font-family: "Guardian Headline Bold";
   span {
     font-size: 80%;
     color: var(--brand-primary);
+    font-family: "Guardian Headline Bold";
   }
 }
 
@@ -126,6 +128,7 @@ main {
   opacity: 0;
 }
 .image-panel {
+  overflow: hidden;
   .bg-container {
     padding: 2rem;
     min-height: 30vmin;
@@ -134,12 +137,16 @@ main {
     @include mq(desktop) {
       padding: 10rem;
       min-height: 50vmin;
+      background-attachment: fixed;
     }
+    transform-origin: 50%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
     .container {
       padding: 3rem;
+      max-width: 40rem;
+      margin: 0 auto;
       // background-color: #0001;
     }
   }
@@ -204,6 +211,7 @@ main {
   line-height: 1.5;
   margin-bottom: 1rem;
   padding: 1rem 0;
+  opacity: 0.7;
 }
 p.feature {
   font-size: 120%;
@@ -290,14 +298,15 @@ header {
   }
 }
 
-section {
-  --panelBgColor: #D4CCFF;
+.padded-container {
+  padding: 0 2rem;
   max-width: 62rem;
   margin: auto;
-
-  .padded-container {
-    padding: 0 2rem;
-  }
+}
+section {
+  --panelBgColor: #D4CCFF;
+  
+  
 
   background: url('<%= path %>/grunge_wall.png') repeat 50%;
   // @include mq(desktop) {
