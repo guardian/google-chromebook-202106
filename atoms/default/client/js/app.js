@@ -76,9 +76,11 @@ const Header = () => {
 
 const Panel = ({className, children}) => <div className={`panel ${className}`}>{children}</div>;
 
-const ImagePanel = ({className, children, image}) => 
-    <Panel className="image-panel">
-        <div className="bg-container" style={{backgroundImage: `url(${image})`}}>
+const ImagePanel = ({className, children, image}) => {
+    const bgRef = useRef();
+
+    return <Panel className="image-panel">
+        <div className="bg-container" style={{backgroundImage: `url(${image})`}} ref={bgRef}>
             {children && 
             <Container>
                 {children}
@@ -86,7 +88,7 @@ const ImagePanel = ({className, children, image}) =>
             }
         </div>
     </Panel>
-
+}
 
 const AudioSection = () => 
     <Container>
@@ -221,25 +223,26 @@ const Main = () => {
                         </div>
                         
 
-                    </PaddedContainer>
 
                     
-                    <div className="cta">
-                        <div dangerouslySetInnerHTML={setHtml(data['cta'])}></div>            
-                    </div>
+                        <div className="cta">
+                            <div dangerouslySetInnerHTML={setHtml(data['cta'])}></div>            
+                        </div>
 
 
-                    <div className="break">
-                        <hr/>
-                        <hr/>
-                        <hr/>
-                        <hr/>
-                    </div>
+                        <div className="break">
+                            <hr/>
+                            <hr/>
+                            <hr/>
+                            <hr/>
+                        </div>
 
-                    <SocialBar />
+                        <SocialBar />
+                    </PaddedContainer>
+
                 </section>
                 <footer>
-                    <div className="container">
+                    <div className="container padded-container">
                         <h2>Related content</h2>
                         <ul className='list-unstyled related-list'>
                             <li><img src="https://via.placeholder.com/300x200" alt=""/><p>Lorem ipsum dolor sit amet.</p></li>
