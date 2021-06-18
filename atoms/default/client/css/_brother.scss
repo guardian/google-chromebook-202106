@@ -118,9 +118,13 @@ q {
   padding: 2rem 0;
 }
 #Glabs {
+  
   background-color: var(--purple);
 }
 
+main {
+  opacity: 0;
+}
 .image-panel {
   .bg-container {
     padding: 2rem;
@@ -206,6 +210,11 @@ p.feature {
 }
 .hl {
   color: var(--brand-primary);
+}
+
+.loading {
+  height: 90vh;
+  justify-content: center;
 }
 header {
   position: relative;

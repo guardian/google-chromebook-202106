@@ -11,7 +11,7 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 import Brother from "./Brother";
 import store, {fetchData} from "./store";
 import {Provider, useSelector, useDispatch} from "react-redux";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import AudioPlayer from "../../../../shared/js/AudioPlayer";
 
 
@@ -41,7 +41,7 @@ const PaddedContainer = ({children, className}) => {
 }
 
 const PaidForBy = () => {
-    const link = useSelector(s=>s.sheets.global.logoLink);
+    const link = useSelector(s=>s.sheets.global[0].logoLink);
     
     return (
         <FlexContainer className="paid-for fl-col" >
@@ -55,12 +55,16 @@ const setHtml = (html) => ({__html: html});
 
 const Header = () => {
     const globalData = useSelector(s=>s.sheets.global[0]);
+
+    useEffect(() => {
+        gsap.from('.title',{duration: 1, y: 20, alpha: 0, delay: 3});
+    },[])
     return (
         <header>
             <LoopingBgVid src='hero.mp4' />
             <FlexContainer className="fl-col fl-space-between">
                 <PaidForBy/>
-                <h1 dangerouslySetInnerHTML={setHtml(globalData.headline)}></h1>
+                <h1 className="title" dangerouslySetInnerHTML={setHtml(globalData.headline)}></h1>
                 {/* <h1>
                 ‘It all comes back to holy basil’: <br/>
                 <span class="sub">how Palisa Anderson’s farm and community helped save her restaurant</span>
@@ -106,10 +110,15 @@ const Youtube = ({videoId, title = 'Youtube player'}) =>
         <iframe src={`https://www.youtube-nocookie.com/embed/${videoId}`} title={title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
+const Loading = () => 
+    <FlexContainer className="loading">
+        <img src='<%= path %>/logo.svg' width="300"/>
+    </FlexContainer>
+
 const Main = () => {
     const loaded = useSelector(s=>s.dataLoaded);
     
-
+    const mainRef = useRef();
 
     const dispatch = useDispatch();
 
@@ -118,7 +127,7 @@ const Main = () => {
     },[]);
 
     if (!loaded) {
-        return (<h1>Loading...</h1>);
+        return <Loading />;
     } else {
         const contentData = useSelector(s=>s.sheets.content);
         const cta = useSelector(s=>s.sheets.global.cta);
@@ -129,10 +138,12 @@ const Main = () => {
             contentData.forEach(v => d[v.key] = v.content)
 
             setData(d);
+            gsap.to(mainRef.current, {delay: 0.5, duration: 2, alpha: 1, ease: 'sine.out'});
+
             
         }, [])
         return (
-            <main>
+            <main ref={mainRef}>
                 <Header />
                 <section>
                     <PaddedContainer>
