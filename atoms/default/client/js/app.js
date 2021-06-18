@@ -4,11 +4,10 @@
 // just do e.g. import Scatter from "shared/js/scatter.js"
 import { render, h } from "preact";
 import SocialBar from 'shared/js/SocialShare';
-import {$, $$} from 'shared/js/util';
-import RelatedContent from "shared/js/RelatedContent";
+// import {$, $$} from 'shared/js/util';
+// import RelatedContent from "shared/js/RelatedContent";
 import {gsap, Sine} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import Brother from "./Brother";
 import store, {fetchData} from "./store";
 import {Provider, useSelector, useDispatch} from "react-redux";
 import { useEffect, useRef, useState } from "preact/hooks";
