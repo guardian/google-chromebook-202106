@@ -123,7 +123,7 @@ const Main = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch( fetchData('https://interactive.guim.co.uk/docsdata/11f3uHy47SIqKvRkS0EAuE3nOVoYpkbkV7cLnOufgo7s.json') );
+        dispatch( fetchData('https://interactive.guim.co.uk/docsdata/1CIKQzf3wPFExD4PupGaW1oKNGKpRUbZjU4c-TXyNizo.json') );
     },[]);
 
     if (!loaded) {
