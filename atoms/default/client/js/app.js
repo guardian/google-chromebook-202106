@@ -223,7 +223,7 @@ const Main = () => {
                                 <div className="min-h">
                                     <LoopingBgVid image="iiko-003.jpg" />
                                 </div>
-                                <small dangerouslySetInnerHTML={setHtml(data['caption2'])}></small>
+                                
                                 
                             </div>
                             <div className="col-50">
@@ -231,7 +231,7 @@ const Main = () => {
                                     <LoopingBgVid src="chef.mp4" />
 
                                 </div>
-                                
+                                <small dangerouslySetInnerHTML={setHtml(data['caption2'])}></small>
 
                                 <div dangerouslySetInnerHTML={setHtml(data['block7'])}></div>
                             </div>
