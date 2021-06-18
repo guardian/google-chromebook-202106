@@ -111,9 +111,14 @@ const CenterPara = ({className, children}) =>
         {children}
     </div>
 
-const LoopingBgVid = ({src}) => 
+const LoopingBgVid = ({src, image}) => 
     <div className="video-bg">
+        {image &&
+        <div className="image" style={{backgroundImage: `url(<%= path %>/${image})`}} ></div>
+        }
+        {src && 
         <video src={`<%= path %>/${src}`} loop muted='true' autoPlay width="400" height="200"></video>
+        }
     </div>
 
 const Youtube = ({videoId, title = 'Youtube player'}) =>
@@ -190,7 +195,7 @@ const Main = () => {
                             </div>
                             <div className="col-50 p-rel">
                                 <div className="min-h">
-                                    <LoopingBgVid src="kitchen.mp4" />
+                                    <LoopingBgVid image="boon-001.jpg" />
 
                                 </div>
                             </div>
@@ -215,14 +220,14 @@ const Main = () => {
                             <div className="col-50 p-rel">
                                 <div dangerouslySetInnerHTML={setHtml(data['block6'])}></div>
                                 <div className="min-h">
-                                    <LoopingBgVid src="computer.mp4" />
+                                    <LoopingBgVid src="kitchen.mp4" />
 
                                 </div>
                                 
                             </div>
                             <div className="col-50">
                                 <div className="min-h">
-                                    <LoopingBgVid src="kitchen.mp4" />
+                                    <LoopingBgVid image="boon-003.jpg" />
 
                                 </div>
                                 <small dangerouslySetInnerHTML={setHtml(data['caption2'])}></small>
