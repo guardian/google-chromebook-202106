@@ -184,7 +184,7 @@ const Main = () => {
                             </div>
                             <div className="col-50 p-rel">
                                 <div className="min-h">
-                                    <LoopingBgVid image="image-001.jpg" />
+                                    <LoopingBgVid image="iiko-001.jpg" />
 
                                 </div>
                             </div>
@@ -221,7 +221,7 @@ const Main = () => {
                             <div className="col-50 p-rel">
                                 <div dangerouslySetInnerHTML={setHtml(data['block6'])}></div>
                                 <div className="min-h">
-                                    <LoopingBgVid image="image-003.jpg" />
+                                    <LoopingBgVid image="iiko-003.jpg" />
                                 </div>
                                 <small dangerouslySetInnerHTML={setHtml(data['caption2'])}></small>
                                 
