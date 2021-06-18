@@ -79,6 +79,15 @@ const Panel = ({className, children}) => <div className={`panel ${className}`}>{
 const ImagePanel = ({className, children, image}) => {
     const bgRef = useRef();
 
+    useEffect(()=>{
+        ScrollTrigger.create({
+            trigger: bgRef.current,
+            start: "top bottom",
+            animation: gsap.to(bgRef.current, {scale: 1.1}),
+            scrub: true
+          });
+    },[]);
+
     return <Panel className="image-panel">
         <div className="bg-container" style={{backgroundImage: `url(${image})`}} ref={bgRef}>
             {children && 
