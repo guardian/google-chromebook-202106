@@ -141,7 +141,7 @@ const Main = () => {
         return <Loading />;
     } else {
         const contentData = useSelector(s=>s.sheets.content);
-        const cta = useSelector(s=>s.sheets.global.cta);
+        const cta = useSelector(s=>s.sheets.global[0].cta);
         const [data, setData] = useState({});
 
         useEffect(() => {
