@@ -147,7 +147,16 @@ const Main = () => {
     } else {
         const contentData = useSelector(s=>s.sheets.content);
         const cta = useSelector(s=>s.sheets.global[0].cta);
+        const relatedItems = useSelector(s=>s.sheets.related);
         const [data, setData] = useState({});
+
+        const relatedList = relatedItems.map(v=>
+            <li>
+                <a href={v.link}>
+                    <img src={`<%= path %>/${v.image}`} alt=""/>
+                    <div dangerouslySetInnerHTML={setHtml(v.content)}></div>
+                </a>
+            </li>);
 
         useEffect(() => {
             const d = {cta};
@@ -259,8 +268,7 @@ const Main = () => {
                     <div className="container padded-container">
                         <h2>Related content</h2>
                         <ul className='list-unstyled related-list'>
-                            <li><img src="https://via.placeholder.com/300x200" alt=""/><p>Lorem ipsum dolor sit amet.</p></li>
-                            <li><img src="https://via.placeholder.com/300x200" alt=""/><p>Lorem ipsum dolor sit amet.</p></li>
+                            {relatedList}
                         </ul>
 
                     </div>
