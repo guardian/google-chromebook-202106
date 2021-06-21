@@ -17,6 +17,16 @@ a {
   color: white;
   font-size: 1rem;
 }
+// ATOM overrides
+
+.content--pillar-news:not(.paid-content) a {
+ color: currentColor !important;
+}
+.content {
+  color: white;
+}
+// end
+
 .list-unstyled {
   list-style: none;
   padding: 0;
