@@ -131,7 +131,7 @@ main {
   overflow: hidden;
   .bg-container {
     padding: 2rem;
-    min-height: 30vmin;
+    min-height: 80vmin;
     display: flex;
     align-items: center;
     @include mq(desktop) {
@@ -206,9 +206,14 @@ main {
   }
 }
 .min-h {
-  height: 60vmin;
+  height: 100vmin;
+  min-height: 400px;
   .video-bg {
     position: relative;
+  }
+
+  @include mq(desktop) {
+    height: 60vmin;
   }
 }
 .min-h + small {
@@ -494,7 +499,11 @@ section {
   .social-bar {
     margin-bottom: 2rem;
     @include mq($until: desktop) {
-      padding: 0 2rem;
+      // padding: 0 2rem;
+    }
+
+    @include mq($until: tablet) {
+      text-align: center;
     }
 
   }
