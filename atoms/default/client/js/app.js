@@ -116,7 +116,7 @@ const LoopingBgVid = ({src, image}) =>
         <div className="image" style={{backgroundImage: `url(<%= path %>/${image})`}} ></div>
         }
         {src && 
-        <video src={`<%= path %>/${src}`} loop muted='true' autoPlay width="400" height="200"></video>
+        <video src={`<%= path %>/${src}`} loop muted='true' autoPlay width="400" height="200" playsInline></video>
         }
     </div>
 
