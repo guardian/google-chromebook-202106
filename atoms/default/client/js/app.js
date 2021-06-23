@@ -147,6 +147,7 @@ const Main = () => {
     } else {
         const contentData = useSelector(s=>s.sheets.content);
         const cta = useSelector(s=>s.sheets.global[0].cta);
+        const globalData = useSelector(s=>s.sheets.global[0]);
         const relatedItems = useSelector(s=>s.sheets.related);
         const [data, setData] = useState({});
 
@@ -260,7 +261,7 @@ const Main = () => {
                             <hr/>
                         </div>
 
-                        <SocialBar />
+                        <SocialBar title={globalData.shareTitle} url={globalData.url} />
                     </PaddedContainer>
 
                 </section>
