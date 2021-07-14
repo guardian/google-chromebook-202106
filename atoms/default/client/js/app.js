@@ -169,7 +169,7 @@ const Main = () => {
             
         }, [])
         return (
-            <main ref={mainRef}>
+            <div className="glab-main" ref={mainRef}>
                 <Header />
                 <section>
                     <PaddedContainer>
@@ -274,7 +274,7 @@ const Main = () => {
 
                     </div>
                 </footer>
-            </main>
+            </div>
         );
     }
 }
